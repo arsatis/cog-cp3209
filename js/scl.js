@@ -10,6 +10,8 @@ function initFadeIn() {
 function make_slides(f) {
   var slides = {};
 
+  ////////// INSTRUCTIONS //////////
+
   slides.i0 = slide({
      name : "i0",
      start: function() {
@@ -38,40 +40,48 @@ function make_slides(f) {
     }
   });
 
-  slides.conditionOne = slide({
-    name : "conditionOne",
+  ////////// CONDITIONS //////////
+
+  slides.conditionA = slide({
+    name : "conditionA",
+
     start: function() {
-    
       document.getElementById('myVideo').addEventListener('ended',myHandler,false);
-
-    function myHandler(e) {
-      exp.go();// What you want to do after the event
-    }
+      function myHandler(e) { exp.go(); }
     },
+
     button : function() {
-      document.getElementById('start-video').play() ;
-      document.getElementById('myVideo').play()
-
-
-     // exp.go(); //use exp.go() if and only if there is no "present" data.
-    } // remove for actual
-
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo').play(); //use exp.go() if and only if there is no "present" data.
+    }
   });
 
-  slides.conditionTwo = slide({
-    name : "conditionTwo",
+  slides.conditionB = slide({
+    name : "conditionB",
+
     start: function() {
       document.getElementById('myVideo2').addEventListener('ended',myHandler,false);
-    function myHandler(e) {
-      exp.go();// What you want to do after the event
-    }
+      function myHandler(e) { exp.go(); }
     },
-    button : function() {
-      document.getElementById('start-video').play() ;
-      document.getElementById('myVideo2').play()
-      //  exp.go(); //use exp.go() if and only if there is no "present" data.
-    } // remove for actual
 
+    button : function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo2').play(); //use exp.go() if and only if there is no "present" data.
+    }
+  });
+
+  slides.conditionC = slide({
+    name : "conditionC",
+
+    start: function() {
+      document.getElementById('myVideo3').addEventListener('ended',myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+
+    button : function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo3').play(); //use exp.go() if and only if there is no "present" data.
+    }
   });
 
   /*
@@ -96,8 +106,10 @@ function make_slides(f) {
   }
   */
 
-  slides.causalMatrixH = slide({
-    name : "causalMatrixH",
+  ////////// RELATION MATRIX //////////
+
+  slides.matrixOne = slide({
+    name : "matrixOne",
     start: function() {
       $(".err").hide();
       this.startTime = Date.now();
@@ -105,7 +117,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=blue]:checked').length == 0|$('input[name=pink]:checked').length == 0|$('input[name=orange]:checked').length == 0|$('input[name=bp]:checked').length == 0|$('input[name=po]:checked').length == 0|$('input[name=bo]:checked').length == 0|$('input[name=all]:checked').length == 0|$('input[name=other]:checked').length == 0){
+      if($('input[name=bulb1-bulb2]:checked').length == 0 | $('input[name=blue-bulb1]:checked').length == 0 | $('input[name=blue-bulb2]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -122,246 +134,266 @@ function make_slides(f) {
     log_responses : function() {
       append(exp.data,
         {
-          "causeRT": this.RT,
-          "causeBlue" : $('input[name="blue"]:checked').val(),
-          "causePink" : $('input[name="pink"]:checked').val(),
-          "causeOrange" : $('input[name="orange"]:checked').val(),
-          "causeB&P" : $('input[name="bp"]:checked').val(),
-          "causeP&O" : $('input[name="po"]:checked').val(),
-          "causeB&O" : $('input[name="bo"]:checked').val(),
-          "causeAll" : $('input[name="all"]:checked').val(),
-          "causeOther" : $('input[name="other"]:checked').val()
-        }
-        )
+          "relationRT": this.RT,
+          "relationOneTwo" : $('input[name="bulb1-bulb2"]:checked').val(),
+          "relationBlueOne" : $('input[name="blue-bulb1"]:checked').val(),
+          "relationBlueTwo" : $('input[name="blue-bulb2"]:checked').val()
+        })
     }
   });
 
-function mapIntention(sentence) {
-  if (sentence == "How likely is it that Brock wanted to satisfy a goal/achieve something?"){
-    return "intention1"
-  } else if (sentence == "Are Brock's actions likely to be intentional?"){
-    return "intention2"
-  } else if (sentence == "Was Brock aiming to open the door?"){
-    return "goal"
-  } else if (sentence == "Was Brock aiming to clean the room?") {
-    return "goalClean"
-  }
-}
+  ////////// EXPECTATION MATRIX //////////
 
+  slides.matrixTwo = slide({
+    name : "matrixTwo",
+    start: function() {
+      $(".err").hide();
+      this.startTime = Date.now();
+  
+    },
+    button : function() {
 
-slides.intentionH = slide({
-  name: "intentionH",
-  trial_num: 1, // counter to record trial number within block
-
-  /* trial information for this block
-   (the variable 'stim' will change between each of these values,
-    and for each of these, present_handle will be run.) */
-  present: [
-    {sentence: "Was Brock aiming to clean the room?"}, //goalClean
-    {sentence: "Are Brock's actions likely to be intentional?"}, //intention
-    {sentence: "How likely is it that Brock wanted to satisfy a goal/achieve something?"}, //intention
-    {sentence: "Was Brock aiming to open the door?"} //goal
-  ],
-
-  //this gets run only at the beginning of the block
-  present_handle : function(stim) {
-    $(".err").hide();
-    this.stim = stim; //I like to store this information in the slide so I can record it later.
-    this.startTime = Date.now();
-
-    $(".prompt").html(stim.sentence);
-    //erase current value
-    document.getElementById('opt1IH').checked = false;
-    document.getElementById('opt2IH').checked = false;
-    document.getElementById('opt3IH').checked = false;
-    document.getElementById('opt4IH').checked = false;
-    document.getElementById('opt5IH').checked = false;
-    document.getElementById('opt6IH').checked = false;
-    document.getElementById('opt7IH').checked = false;
-    document.getElementById('opt8IH').checked = false;
-    document.getElementById('opt9IH').checked = false;
-
-  },
-
-  button : function() {
-
-    if($('input[name=assess]:checked').length == 0) {
-      $(".err").show();
-    } else {
-
-      this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-      this.log_responses();
-
-      /* use _stream.apply(this); if and only if there is
-      "present" data. (and only *after* responses are logged) */
-      _stream.apply(this);
+      if($('input[name=exp-button]:checked').length == 0 | $('input[name=exp-bulb1]:checked').length == 0 | $('input[name=exp-bulb2]:checked').length == 0) {
+        $(".err").show();
+      } else {
+  
+        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.log_responses();
+  
+        /* use _stream.apply(this); if and only if there is
+        "present" data. (and only *after* responses are logged) */
+        exp.go();
+      }
+    },
+  
+    log_responses : function() {
+      append(exp.data,
+        {
+          "expRT": this.RT,
+          "expButton" : $('input[name="exp-button"]:checked').val(),
+          "expOne" : $('input[name="exp-bulb1"]:checked').val(),
+          "expTwo" : $('input[name="exp-bulb2"]:checked').val()
+        })
     }
+  });
 
-  },
+  ////////// INTENTIONALITY //////////
 
-  log_responses : function() {
-
-    var sentence = mapIntention(this.stim.sentence)
-    var sentenceRT = sentence + "RT"
-    var sentenceOrder = sentence + "Order"
-
-    exp.data[sentence] = $('input[name="assess"]:checked').val(),
-    exp.data[sentenceRT] = this.RT
-    exp.data[sentenceOrder] = this.trial_num
-    
-    this.trial_num++
-  }
-});
-
-slides.attention1 =  slide({ //check this!!!
-  name : "attention1",
-
-  //this gets run only at the beginning of the block
-  start: function() {
-    $(".err").hide();
-    this.startTime = Date.now();
-
-  },
-  button : function(){
-
-    if($('input[name=attention1]:checked').length == 0) {
-      $(".err").show();
-    } else {
-
-      this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-      this.log_responses();
-
-      exp.go();
+  function mapIntention(sentence) {
+    if (sentence == "Are Brock's actions likely to be intentional?") {
+      return "intention1"
+    } else if (sentence == "How likely is it that Brock wanted to achieve something?") {
+      return "intention2"
+    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?') {
+      return "intention3"
+    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
+      return "intention4"
+    } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
+      return "intention5"
+    } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
+      return "attentionCheck"
     }
+  }
 
-  },
+  slides.intentionH = slide({
+    name: "intentionH",
+    trial_num: 1, // counter to record trial number within block
 
-  log_responses : function() {
-    append(exp.data,
-      {
-        "attention1RT": this.RT,
-        "attention1" : $('input[name="attention1"]:checked').val()
+    /* trial information for this block
+    (the variable 'stim' will change between each of these values,
+      and for each of these, present_handle will be run.) */
+    present: [
+      {sentence: "Are Brock's actions likely to be intentional?"},
+      {sentence: "How likely is it that Brock wanted to break a lightbulb?"},
+      {sentence: "How likely is it that Brock wanted to achieve something?"},
+      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'}
+    ],
+
+    //this gets run only at the beginning of the block
+    present_handle : function(stim) {
+      $(".err").hide();
+      this.stim = stim; //I like to store this information in the slide so I can record it later.
+      this.startTime = Date.now();
+
+      $(".prompt").html(stim.sentence);
+      //erase current value
+      document.getElementById('opt1IH').checked = false;
+      document.getElementById('opt2IH').checked = false;
+      document.getElementById('opt3IH').checked = false;
+      document.getElementById('opt4IH').checked = false;
+      document.getElementById('opt5IH').checked = false;
+      document.getElementById('opt6IH').checked = false;
+      document.getElementById('opt7IH').checked = false;
+      document.getElementById('opt8IH').checked = false;
+      document.getElementById('opt9IH').checked = false;
+
+    },
+
+    button : function() {
+      if($('input[name=assess]:checked').length == 0) {
+        $(".err").show();
+      } else {
+
+        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.log_responses();
+
+        /* use _stream.apply(this); if and only if there is
+        "present" data. (and only *after* responses are logged) */
+        _stream.apply(this);
+      }
+    },
+
+    log_responses : function() {
+      var sentence = mapIntention(this.stim.sentence);
+      var sentenceRT = sentence + "RT";
+      var sentenceOrder = sentence + "Order";
+
+      exp.data[sentence] = $('input[name="assess"]:checked').val();
+      exp.data[sentenceRT] = this.RT;
+      exp.data[sentenceOrder] = this.trial_num;
+      
+      this.trial_num++;
+    }
+  });
+
+  ////////// ATTENTION CHECKS //////////
+
+  slides.attention1 = slide({ //check this!!!
+    name : "attention1",
+
+    //this gets run only at the beginning of the block
+    start: function() {
+      $(".err").hide();
+      this.startTime = Date.now();
+    },
+
+    button : function(){
+      if($('input[name=attention1]:checked').length == 0) {
+        $(".err").show();
+
+      } else {
+        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.log_responses();
+        exp.go();
+      }
+    },
+
+    log_responses : function() {
+      append(exp.data,
+        {
+          "attention1RT": this.RT,
+          "attention1" : $('input[name="attention1"]:checked').val()
+        })
+    }
+  });
+
+  slides.attention2 = slide({ //check this!!!
+    name : "attention2",
+
+    //this gets run only at the beginning of the block
+    start: function() {
+      $(".err").hide();
+      this.startTime = Date.now();
+    },
+
+    button : function(){
+      if($('input[name=att-button]:checked').length == 0|$('input[name=att-bulb1]:checked').length == 0|$('input[name=att-bulb2]:checked').length == 0) {
+        $(".err").show();
+
+      } else {
+        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.log_responses();
+        exp.go();
+      }
+    },
+
+    log_responses : function() {
+      append(exp.data,
+        {
+          "attention2RT": this.RT,
+          "attentionButton" : $('input[name="att-button"]:checked').val(),
+          "attentionBulb1" : $('input[name="att-bulb1"]:checked').val(),
+          "attentionBulb2" : $('input[name="att-bulb2"]:checked').val()
+        })
+    }
+  });
+
+  ////////// EMOJI MEANING - FOR PILOT //////////
+
+  slides.emoji = slide({
+    name : "emoji",
+
+    start: function() {
+      $(".err").hide();
+      // $(".err2").hide();
+      this.startTime = Date.now();
+    },
+
+    button : function(){
+      if ($("#emoji1").val() == "") {
+        $(".err").show();
+
+      } else {
+        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.log_responses();
+        exp.go();
+      }
+    },
+
+    log_responses : function() {
+      append(exp.data,
+        {
+          "emojiRT": this.RT,
+          "emojiResp":$("#emoji1").val()
+        })
+    }
+  });
+
+  ////////// SUBJECT INFORMATION //////////
+
+  slides.subj_info =  slide({
+    name : "subj_info",
+    start: function() {
+      $(".err").hide();
+
+    },
+    submit : function(e){
+      //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
+      append(exp.data, 
+        {
+        url : window.location.href,
+        id : getID(window.location.href),
+        language : $("#language").val(),
+        enjoyment : $("#enjoyment").val(),
+        age : $("#age").val(),
+        gender : $("#gender").val(),
+        education : $("#education").val(),
+        comments : $("#comments").val(),
+        condition : exp.condition,
+        totalRT : (Date.now() - exp.startT)/60000,
+        browser : exp.system["Browser"],
+        os : exp.system["OS"],
+        screenH: exp.system["screenH"],
+        screenUH: exp.system["screenUH"],
+        screenW: exp.system["screenW"],
+        screenUW: exp.system["screenUW"]
       }
       )
 
-  }
-});
+      if(!Number.isNaN(parseInt($("#age").val())) || $("#age").val() == "") { //age should be a number
 
+        exp.go(); //use exp.go() if and only if there is no "present" data.
+      } else {
 
-slides.attention2H =  slide({ //check this!!!
-  name : "attention2H",
-
-  //this gets run only at the beginning of the block
-  start: function() {
-    $(".err").hide();
-    this.startTime = Date.now();
-
-  },
-  button : function(){
-
-    if($('input[name=blueA]:checked').length == 0|$('input[name=pinkA]:checked').length == 0|$('input[name=orangeA]:checked').length == 0) {
-      $(".err").show();
-    } else {
-
-      this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-      this.log_responses();
-
-      exp.go();
-    }
-
-  },
-
-  log_responses : function() {
-    append(exp.data,
-      {
-        "attention2RT": this.RT,
-        "attentionBlue" : $('input[name="blueA"]:checked').val(),
-        "attentionPink" : $('input[name="pinkA"]:checked').val(),
-        "attentionOrange" : $('input[name="orangeA"]:checked').val()
+        $(".err").show();
       }
-      )
-
-  }
-});
-
-slides.emoji =  slide({ //check this!!!
-  name : "emoji",
-  start: function() {
-    $(".err").hide();
-    // $(".err2").hide();
-    this.startTime = Date.now();
-  },
-
-  button : function(){
-    if ($("#emoji1").val() == "") {
-      $(".err").show();
-    /* else if(Number.isNaN(parseInt($("#delay1").val()))|Number.isNaN(parseInt($("#delay2").val()))|Number.isNaN(parseInt($("#delay3").val()))){
-      $(".err2").show();
-    } */
-    } else {
-
-      this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-      this.log_responses();
-
-      exp.go()
+      
     }
-  },
+  });
 
-  log_responses : function() {
-    append(exp.data,
-      {
-        "emojiRT": this.RT,
-        "emojiResp":$("#emoji1").val()
-      }
-    )
-  }
-});
-
-slides.subj_info =  slide({
-  name : "subj_info",
-  start: function() {
-    $(".err").hide();
-
-  },
-  submit : function(e){
-    //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
-    append(exp.data, 
-      {
-      url : window.location.href,
-      id : getID(window.location.href),
-      language : $("#language").val(),
-      enjoyment : $("#enjoyment").val(),
-      age : $("#age").val(),
-      gender : $("#gender").val(),
-      education : $("#education").val(),
-      comments : $("#comments").val(),
-      condition : exp.condition,
-      totalRT : (Date.now() - exp.startT)/60000,
-      browser : exp.system["Browser"],
-      os : exp.system["OS"],
-      screenH: exp.system["screenH"],
-      screenUH: exp.system["screenUH"],
-      screenW: exp.system["screenW"],
-      screenUW: exp.system["screenUW"]
-    }
-    )
-
-    if(!Number.isNaN(parseInt($("#age").val())) || $("#age").val() == "") { //age should be a number
-
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    } else {
-
-      $(".err").show();
-    }
-    
-  }
-});
-
-
-
-
-  //////////////////////////////
-
+  ////////// FIN //////////
 
   slides.thanks = slide({
     name : "thanks",
@@ -462,7 +494,7 @@ function init() {
   */
 
   exp.data = {};
-  exp.condition = _.sample(["condition 1", "condition 2"]); //can randomize between subject conditions here
+  exp.condition = _.sample(["condition 1", "condition 2", "condition 3"]); //can randomize between subject conditions here
   exp.system = {
       Browser : BrowserDetect.browser,
       OS : BrowserDetect.OS,
@@ -473,36 +505,25 @@ function init() {
     };
 
   //blocks of the experiment:
-  if (exp.condition == "condition 1"){
+  if (exp.condition == "condition 1") {
     exp.structure=[
-      "i0",
-      "botcaptcha",
-      "instructions1",
-      "conditionOne",
-      "instructionsH",
-      "causalMatrixH",
-      "intentionH",
-      "attention1",
-      "attention2H",
-      "emoji",
-      "subj_info",
-      "thanks"
+      "i0", "botcaptcha", "instructions1",
+      "conditionA", // different across conditions
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
+    ];
+
+  } else if (exp.condition == "condition 2") {
+    exp.structure=[
+      "i0", "botcaptcha", "instructions1",
+      "conditionB", // different across conditions
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
-      "i0",
-      "botcaptcha",
-      "instructions1",
-      "conditionTwo",
-      "instructionsH",
-      "causalMatrixH",
-      "intentionH",
-      "attention1",
-      "attention2H",
-      "emoji",
-      "subj_info",
-      "thanks"
+      "i0", "botcaptcha", "instructions1",
+      "conditionC", // different across conditions
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
   } 

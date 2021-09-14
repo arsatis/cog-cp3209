@@ -34,7 +34,6 @@ divl {
   font-size: 12px;
 }
 
-
 button {
   font-size: 16px;
 }
@@ -44,19 +43,19 @@ button {
 }
 
 #conditionOne {
-    border: none;
+  border: none;
 }
 
 #conditionTwo {
-    border: none;
+  border: none;
 }
 
 #conditionThree {
-    border: none;
+  border: none;
 }
 
 #conditionFour {
-    border: none;
+  border: none;
 }
 
 #subj_info {
@@ -78,12 +77,12 @@ button {
 }
 
 .checkboxtable {
-    display: inline-block;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom:10px;
+  display: inline-block;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom:10px;
 }
 
 td {

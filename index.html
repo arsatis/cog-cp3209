@@ -119,28 +119,42 @@
 
 
   <!-- Condition 1 -->
-  <div class="slide"  id="conditionOne">
-      <video id="myVideo" width="700" height="600" >
-        <source src="media/1-with-emoji.mp4" type="video/mp4">
+  <div class="slide" id="conditionA">
+    <video id="myVideo" width="700" height="600" >
+      <source src="media/one-angry.mp4" type="video/mp4">
       Your browser does not support the video tag.
-      </video>
-      <audio id="start-video" preload="none">
-        <source src="media/start-vid.mp3" type="audio/mpeg">
-    </audio>
-      <button onclick="_s.button()">Play Video</button> 
+    </video>
+    <audio id="start-video" preload="none">
+      <source src="media/start-vid.mp3" type="audio/mpeg">
+    </audio><br><br>
+    <button onclick="_s.button()">Play Video</button> 
   </div>
 
 
 
   <!-- Condition 2 -->
-  <div class="slide"  id="conditionTwo">
+  <div class="slide" id="conditionB">
     <video id="myVideo2" width="700" height="600" >
-      <source src="media/2-no-emoji.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+      <source src="media/one-emotionless.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
     <audio id="start-video" preload="none">
       <source src="media/start-vid.mp3" type="audio/mpeg">
-    </audio>
+    </audio><br><br>
+    <button onclick="_s.button()">Play Video</button>
+  </div>
+
+
+
+  <!-- Condition 3 -->
+  <div class="slide" id="conditionC">
+    <video id="myVideo3" width="700" height="600" >
+      <source src="media/one-happy.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <audio id="start-video" preload="none">
+      <source src="media/start-vid.mp3" type="audio/mpeg">
+    </audio><br><br>
     <button onclick="_s.button()">Play Video</button>
   </div>
 
@@ -157,14 +171,14 @@
 
 
 
-  <!-- Questionnaire 1: Buttons -->
-  <div class="slide" id="causalMatrixH">
+  <!-- Questionnaire 1a: Relations -->
+  <div class="slide" id="matrixOne">
     <div class="stimuli center-align">
       <img src="media/human-pic.png"></img>
     </div>
     <p>Based on the animation you saw, answer the following questions.</p>
     <p style="font-size: 14px">(One frame of the animation is provided above for reference)</p>
-    <p>For each of the following items, rate how likely do you think they would cause an event to happen.</p>
+    <p>For each of the following statements, rate how likely are these objects related.</p>
     <table>
       <tr>
         <th></th>
@@ -181,274 +195,247 @@
 
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/blue.png" width=30px height=30px class="blue"> ONLY </p>
+          <p><img src="media/bulb-off-1.png" width=50px height=50px class="blue"> AND <img src="media/bulb-off-2.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
           <label>1</label>
-          <input type="radio" name="blue" value="1">
+          <input type="radio" name="bulb1-bulb2" value="1">
         </div></td> 
         <td><div class="checkboxtable">
           <label>2</label>
-          <input type="radio" name="blue" value="2">
+          <input type="radio" name="bulb1-bulb2" value="2">
         </div></td> 
         <td><div class="checkboxtable">
           <label>3</label>
-          <input type="radio" name="blue" value="3">
+          <input type="radio" name="bulb1-bulb2" value="3">
         </div></td> 
         <td><div class="checkboxtable">
           <label>4</label>
-          <input type="radio" name="blue" value="4">
+          <input type="radio" name="bulb1-bulb2" value="4">
         </div></td> 
         <td><div class="checkboxtable">
           <label>5</label>
-          <input type="radio" name="blue" value="5">
+          <input type="radio" name="bulb1-bulb2" value="5">
         </div></td> 
         <td><div class="checkboxtable">
           <label>6</label>
-          <input type="radio" name="blue" value="6">
+          <input type="radio" name="bulb1-bulb2" value="6">
         </div></td> 
         <td><div class="checkboxtable">
           <label>7</label>
-          <input type="radio" name="blue" value="7">
+          <input type="radio" name="bulb1-bulb2" value="7">
         </div></td> 
         <td><div class="checkboxtable">
           <label>8</label>
-          <input type="radio" name="blue" value="8">
+          <input type="radio" name="bulb1-bulb2" value="8">
         </div></td> 
         <td><div class="checkboxtable">
           <label>9</label>
-          <input type="radio" name="blue" value="9">
+          <input type="radio" name="bulb1-bulb2" value="9">
         </div></td> 
       </tr>
 
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/pink.png" width=30px height=30px class="blue"> ONLY</p>
+          <p><img src="media/blue.png" width=50px height=50px class="blue"> AND <img src="media/bulb-off-1.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="1">
+          <input type="radio" name="blue-bulb1" value="1">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="2">
+          <input type="radio" name="blue-bulb1" value="2">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="3">
+          <input type="radio" name="blue-bulb1" value="3">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="4">
+          <input type="radio" name="blue-bulb1" value="4">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="5">
+          <input type="radio" name="blue-bulb1" value="5">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="6">
+          <input type="radio" name="blue-bulb1" value="6">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="7">
+          <input type="radio" name="blue-bulb1" value="7">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="8">
+          <input type="radio" name="blue-bulb1" value="8">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="pink" value="9">
+          <input type="radio" name="blue-bulb1" value="9">
         </div></td> 
       </tr>
 
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/orange.png" width=30px height=30px class="blue"> ONLY</p>
+          <p><img src="media/blue.png" width=50px height=50px class="blue"> AND <img src="media/bulb-off-2.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="1">
+          <input type="radio" name="blue-bulb2" value="1">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="2">
+          <input type="radio" name="blue-bulb2" value="2">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="3">
+          <input type="radio" name="blue-bulb2" value="3">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="4">
+          <input type="radio" name="blue-bulb2" value="4">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="5">
+          <input type="radio" name="blue-bulb2" value="5">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="6">
+          <input type="radio" name="blue-bulb2" value="6">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="7">
+          <input type="radio" name="blue-bulb2" value="7">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="8">
+          <input type="radio" name="blue-bulb2" value="8">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="orange" value="9">
+          <input type="radio" name="blue-bulb2" value="9">
         </div></td> 
       </tr>
 
+    </table>
+    <hr />
+    <button onclick="_s.button()">Continue</button><br><br>
+    <div class="err">Please answer all questions before continuing.</div>
+  </div>
+
+
+
+  <!-- Questionnaire 1b: Expectations -->
+  <div class="slide" id="matrixTwo">
+    <div class="stimuli center-align">
+      <img src="media/human-pic.png"></img>
+    </div>
+    <p>Based on the animation you saw, answer the following questions.</p>
+    <p style="font-size: 14px">(One frame of the animation is provided above for reference)</p>
+    <p>For each of the following statements, rate how likely do you think they are true.</p>
+    <table>
+      <tr>
+        <th></th>
+        <th>Extremely<br> Unlikely<br></th>
+        <th></th> 
+        <th></th> 
+        <th></th> 
+        <th></th> 
+        <th></th> 
+        <th></th> 
+        <th></th> 
+        <th>Extremely<br> Likely<br></th>
+      </tr>
+
       <tr> 
-        <th></td><div class="checkboxtable">
-          <p><img src="media/blue.png" width=30px height=30px class="blue"> AND <img src="media/pink.png" width=30px height=30px class="blue"></p>
+        <th><div class="checkboxtable">
+          <p>Brock expected <img src="media/blue.png" width=50px height=50px class="blue"> to light up.</p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="1">
+          <label>1</label>
+          <input type="radio" name="exp-button" value="1">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="2">
+          <label>2</label>
+          <input type="radio" name="exp-button" value="2">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="3">
+          <label>3</label>
+          <input type="radio" name="exp-button" value="3">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="4">
+          <label>4</label>
+          <input type="radio" name="exp-button" value="4">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="5">
+          <label>5</label>
+          <input type="radio" name="exp-button" value="5">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="6">
+          <label>6</label>
+          <input type="radio" name="exp-button" value="6">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="7">
+          <label>7</label>
+          <input type="radio" name="exp-button" value="7">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="8">
+          <label>8</label>
+          <input type="radio" name="exp-button" value="8">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bp" value="9">
+          <label>9</label>
+          <input type="radio" name="exp-button" value="9">
         </div></td> 
       </tr>
 
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/pink.png" width=30px height=30px class="blue"> AND <img src="media/orange.png" width=30px height=30px class="blue"></p>
+          <p>Brock expected <img src="media/bulb-off-1.png" width=50px height=50px class="blue"> to light up.</p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="1">
+          <input type="radio" name="exp-bulb1" value="1">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="2">
+          <input type="radio" name="exp-bulb1" value="2">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="3">
+          <input type="radio" name="exp-bulb1" value="3">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="4">
+          <input type="radio" name="exp-bulb1" value="4">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="5">
+          <input type="radio" name="exp-bulb1" value="5">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="6">
+          <input type="radio" name="exp-bulb1" value="6">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="7">
+          <input type="radio" name="exp-bulb1" value="7">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="8">
+          <input type="radio" name="exp-bulb1" value="8">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="po" value="9">
+          <input type="radio" name="exp-bulb1" value="9">
         </div></td> 
       </tr>
 
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/blue.png" width=30px height=30px class="blue"> AND <img src="media/orange.png" width=30px height=30px class="blue"></p>
+          <p>Brock expected <img src="media/bulb-off-2.png" width=50px height=50px class="blue"> to light up.</p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="1">
+          <input type="radio" name="exp-bulb2" value="1">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="2">
+          <input type="radio" name="exp-bulb2" value="2">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="3">
+          <input type="radio" name="exp-bulb2" value="3">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="4">
+          <input type="radio" name="exp-bulb2" value="4">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="5">
+          <input type="radio" name="exp-bulb2" value="5">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="6">
+          <input type="radio" name="exp-bulb2" value="6">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="7">
+          <input type="radio" name="exp-bulb2" value="7">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="8">
+          <input type="radio" name="exp-bulb2" value="8">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="bo" value="9">
-        </div></td> 
-      </tr>
-
-      <tr> 
-        <th><div class="checkboxtable">
-            <p><img src="media/blue.png" width=30px height=30px class="blue"> AND <img src="media/pink.png" width=30px height=30px class="blue"> AND <img src="media/orange.png" width=30px height=30px class="blue"></p>
-        </div></th> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="1">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="2">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="3">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="4">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="5">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="6">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="7">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="8">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="all" value="9">
-        </div></td> 
-      </tr>
-
-      <tr> 
-        <th><div class="checkboxtable">
-          <p>Other Causes</p>
-        </div></th> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="1">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="2">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="3">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="4">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="5">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="6">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="7">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="8">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="other" value="9">
+          <input type="radio" name="exp-bulb2" value="9">
         </div></td> 
       </tr>
 
@@ -462,9 +449,13 @@
 
   <!-- Questionnaire 2: Intentions -->
   <div class="slide" id="intentionH">
-    <p> Based on the animation you saw, answer the following question.</p>
+    <div class="stimuli center-align">
+      <img src="media/human-pic.png"></img>
+    </div>
+    <p>Based on the animation you saw, answer the following questions.</p>
+    <p style="font-size: 14px">(One frame of the animation is provided above for reference)</p>
     <b><p class="prompt"></p></b>
-    <div class="checkboxgroup" id = "check1">
+    <div class="checkboxgroup" id="check1">
       <label>Extremely<br> Unlikely<br>1</label>
       <input type="radio" name="assess" id="opt1IH" value = "1" />
     </div>
@@ -499,7 +490,7 @@
     <div class="checkboxgroup" id = "check9">
       <label>Extremely<br> Likely<br>9</label>
       <input type="radio" name="assess" id="opt9IH" value = "9" />
-    </div> <br> <br>
+    </div><br><br>
     <button onclick="_s.button()">Continue</button><br><br>
     <div class="err">Please answer the question before continuing.</div>
   </div>
@@ -511,7 +502,7 @@
     <p class="info">Based on the animation you saw, answer the following question.</p>
     <p class="left-align"><b>Which of the following did you see in the short video animation?</b><br><br>
       <label><input type="radio" name="attention1" value="1"/> Some character carrying colored boxes around the room.</label><br>
-      <label><input type="radio" name="attention1" value="2"/> Some character lighting up colored boxes in the room.</label><br>
+      <label><input type="radio" name="attention1" value="2"/> Some character lighting up colored buttons in the room.</label><br>
       <label><input type="radio" name="attention1" value="3"/> Some character climbing on objects in the room.</label><br>
       <label><input type="radio" name="attention1" value="4"/> Some character counting the number of objects in the room.</label>
     </p><br><br>
@@ -522,7 +513,7 @@
 
 
   <!-- Questionnaire 4: Attention check -->
-  <div class="slide" id="attention2H">
+  <div class="slide" id="attention2">
     <div class="stimuli center-align">
       <img src="media/human-pic.png"></img>
     </div>
@@ -537,40 +528,40 @@
       </tr>
       <tr> 
         <th><div class="checkboxtable">
-          <p><img src="media/blue.png" width=35px height=35px class="blue"></p>
+          <p><img src="media/blue.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="blueA" value="0">
+          <input type="radio" name="att-button" value="0">
         </div></td> 
         <td><div class="checkboxtable">
-          <input type="radio" name="blueA" value="1">
+          <input type="radio" name="att-button" value="1">
         </div></td> 
-        </tr>
-    
-        <tr> 
-          <th><div class="checkboxtable">
-            <p><img src="media/pink.png" width=35px height=35px class="blue"></p>
-          </div></th> 
-          <td><div class="checkboxtable">
-            <input type="radio" name="pinkA" value="0">
-          </div></td> 
-          <td><div class="checkboxtable">
-            <input type="radio" name="pinkA" value="1">
-          </div></td> 
-          </tr>
-    
-          <tr> 
-            <th><div class="checkboxtable">
-              <p><img src="media/orange.png" width=35px height=35px class="blue"></p>
-            </div></th> 
-            <td><div class="checkboxtable">
-              <input type="radio" name="orangeA" value="0">
-            </div></td> 
-            <td><div class="checkboxtable">
-              <input type="radio" name="orangeA" value="1">
-            </div></td> 
-          </tr>
-      </table>
+      </tr>
+  
+      <tr> 
+        <th><div class="checkboxtable">
+          <p><img src="media/bulb-off-1.png" width=50px height=50px class="blue"></p>
+        </div></th> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="att-bulb1" value="0">
+        </div></td> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="att-bulb1" value="1">
+        </div></td> 
+      </tr>
+  
+      <tr> 
+        <th><div class="checkboxtable">
+          <p><img src="media/bulb-off-2.png" width=50px height=50px class="blue"></p>
+        </div></th> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="att-bulb2" value="0">
+        </div></td> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="att-bulb2" value="1">
+        </div></td> 
+      </tr>
+    </table>
     <button onclick="_s.button()">Continue</button><br><br>
     <div class="err">Please provide a response to all items before continuing.</div>
   </div>
