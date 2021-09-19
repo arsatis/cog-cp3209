@@ -70,20 +70,6 @@ function make_slides(f) {
     }
   });
 
-  slides.conditionC = slide({
-    name : "conditionC",
-
-    start: function() {
-      document.getElementById('myVideo3').addEventListener('ended',myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-
-    button : function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo3').play(); //use exp.go() if and only if there is no "present" data.
-    }
-  });
-
   /*
   var randomSort = function(arr){ 
     range = []
@@ -188,6 +174,8 @@ function make_slides(f) {
       return "intention3"
     } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
       return "intention4"
+    } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
+      return "knowledge"
     } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
     } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
@@ -208,6 +196,7 @@ function make_slides(f) {
       {sentence: "How likely is it that Brock wanted to achieve something?"},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'}
     ],
 
@@ -494,7 +483,7 @@ function init() {
   */
 
   exp.data = {};
-  exp.condition = _.sample(["condition 1", "condition 2", "condition 3"]); //can randomize between subject conditions here
+  exp.condition = _.sample(["condition 1", "condition 2"]); // can randomize between subject conditions here
   exp.system = {
       Browser : BrowserDetect.browser,
       OS : BrowserDetect.OS,
@@ -512,17 +501,10 @@ function init() {
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
-  } else if (exp.condition == "condition 2") {
-    exp.structure=[
-      "i0", "botcaptcha", "instructions1",
-      "conditionB", // different across conditions
-      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
-    ];
-
   } else {
     exp.structure=[
       "i0", "botcaptcha", "instructions1",
-      "conditionC", // different across conditions
+      "conditionB", // different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
