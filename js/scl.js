@@ -156,9 +156,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "expRT": this.RT,
-          "expButton" : $('input[name="exp-button"]:checked').val(),
-          "expOne" : $('input[name="exp-bulb1"]:checked').val(),
-          "expTwo" : $('input[name="exp-bulb2"]:checked').val()
+          "expButton": $('input[name="exp-button"]:checked').val(),
+          "expOne": $('input[name="exp-bulb1"]:checked').val(),
+          "expTwo": $('input[name="exp-bulb2"]:checked').val()
         })
     }
   });
@@ -273,7 +273,7 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention1RT": this.RT,
-          "attention1" : $('input[name="attention1"]:checked').val()
+          "attention1": $('input[name="attention1"]:checked').val()
         })
     }
   });
@@ -302,9 +302,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention2RT": this.RT,
-          "attentionButton" : $('input[name="att-button"]:checked').val(),
-          "attentionBulb1" : $('input[name="att-bulb1"]:checked').val(),
-          "attentionBulb2" : $('input[name="att-bulb2"]:checked').val()
+          "attentionButton": $('input[name="att-button"]:checked').val(),
+          "attentionBulb1": $('input[name="att-bulb1"]:checked').val(),
+          "attentionBulb2": $('input[name="att-bulb2"]:checked').val()
         })
     }
   });
@@ -335,7 +335,7 @@ function make_slides(f) {
       append(exp.data,
         {
           "emojiRT": this.RT,
-          "emojiResp":$("#emoji1").val()
+          "emojiResp": $("#emoji1").val()
         })
     }
   });
@@ -343,39 +343,37 @@ function make_slides(f) {
   ////////// SUBJECT INFORMATION //////////
 
   slides.subj_info =  slide({
-    name : "subj_info",
+    name: "subj_info",
+
     start: function() {
       $(".err").hide();
-
     },
+
     submit : function(e){
       //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
-      append(exp.data, 
-        {
-        url : window.location.href,
-        id : getID(window.location.href),
-        language : $("#language").val(),
-        enjoyment : $("#enjoyment").val(),
-        age : $("#age").val(),
-        gender : $("#gender").val(),
-        education : $("#education").val(),
-        comments : $("#comments").val(),
-        condition : exp.condition,
-        totalRT : (Date.now() - exp.startT)/60000,
-        browser : exp.system["Browser"],
-        os : exp.system["OS"],
+      append(exp.data, {
+        url: window.location.href,
+        id: getID(window.location.href),
+        language: $("#language").val(),
+        enjoyment: $("#enjoyment").val(),
+        age: $("#age").val(),
+        gender: $("#gender").val(),
+        education: $("#education").val(),
+        comments: $("#comments").val(),
+        condition: exp.condition,
+        totalRT: (Date.now() - exp.startT)/60000,
+        browser: exp.system["Browser"],
+        os: exp.system["OS"],
         screenH: exp.system["screenH"],
         screenUH: exp.system["screenUH"],
         screenW: exp.system["screenW"],
         screenUW: exp.system["screenUW"]
-      }
-      )
+      })
 
-      if(!Number.isNaN(parseInt($("#age").val())) || $("#age").val() == "") { //age should be a number
+      if (!Number.isNaN(parseInt($("#age").val())) || $("#age").val() == "") { // age should be a number
+        exp.go(); // use exp.go() if and only if there is no "present" data.
 
-        exp.go(); //use exp.go() if and only if there is no "present" data.
       } else {
-
         $(".err").show();
       }
       
@@ -557,7 +555,7 @@ function init() {
 // sends data to google sheets
 function sendDataToServer(data) {
 	$.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbw0C9o_c_lRaugcv1OZp9MpCLUiaulmqggfJH_SQaoHGAribM16gfw4bEMloOLobomA/exec',
+    url: 'https://script.google.com/macros/s/AKfycbxtAbP28XRUpwYiMpHuldr4s2F3zl6XlqrgREXpDHSHGnnBvhCtoSF2rc_CKx6xXrI6kA/exec',
 		type: 'post',
     data: data,
     complete: function(){
