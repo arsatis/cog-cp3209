@@ -121,9 +121,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "relationRT": this.RT,
-          "relationOneTwo" : $('input[name="bulb1-bulb2"]:checked').val(),
-          "relationBlueOne" : $('input[name="blue-bulb1"]:checked').val(),
-          "relationBlueTwo" : $('input[name="blue-bulb2"]:checked').val()
+          "relationOneTwo": $('input[name="bulb1-bulb2"]:checked').val(),
+          "relationBlueOne": $('input[name="blue-bulb1"]:checked').val(),
+          "relationBlueTwo": $('input[name="blue-bulb2"]:checked').val()
         })
     }
   });
@@ -386,7 +386,9 @@ function make_slides(f) {
     name : "thanks",
     start : function() {
 
-      setTimeout(function() {sendDataToServer(exp.data);
+      setTimeout(
+        function() {
+          sendDataToServer(exp.data);
       }, 1000);
       
     }
@@ -553,16 +555,17 @@ function init() {
 }
 
 // sends data to google sheets
-function sendDataToServer(data) {
+function sendDataToServer(exp_data) {
 	$.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbxtAbP28XRUpwYiMpHuldr4s2F3zl6XlqrgREXpDHSHGnnBvhCtoSF2rc_CKx6xXrI6kA/exec',
-		type: 'post',
-    data: data,
-    complete: function(){
+    url: 'https://script.google.com/macros/s/AKfycbxUi_Vzqy68gbxlzR2tV9cXlG6ax-a--oT1o0FR7HajpGYN1OpHZLw9sfZWjjmySQK7XQ/exec',
+		type: 'POST',
+    data: exp_data,
+    complete: function() {
       window.location.replace("https://app.prolific.co/submissions/complete?cc=5C3823D9") // redirect to prolific
     } 
 	});
 }
+
 function append(dict1, dict2){
   var i
   var keys = Object.keys(dict2)
