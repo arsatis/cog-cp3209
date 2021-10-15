@@ -1,0 +1,327 @@
+var model = function() {
+  ////////// HELPER FUNCTIONS //////////
+  var matchArray = function(x, y) { // checks if 2 arrays are the same
+    if (x.length !== y.length) {
+      return false;
+      
+    } else {
+      var logical = map2(function(a, b) { a == b }, x, y);
+      if (any(function(z) { return z == false; }, logical)) {
+        return false;
+      } else {
+        return true;
+      } 
+    }
+  }
+  
+  var cleanArr = function(cat, array) { // cleans up the order of the array for better visualization of data
+    var cleaned = [];
+    
+    if (array.includes(cat[0])) {
+      cleaned.push(cat[0]);
+    }
+    if (array.includes(cat[1])) {
+      cleaned.push(cat[1]);
+    }
+    if (array.includes(cat[2])) {
+      cleaned.push(cat[2]);
+    }
+    
+    return cleaned;
+  }
+  
+  var drawExpectation = function(delta, belief, desire) { // helper function for drawEmo()
+    var exp = cleanArr(belief, belief); // returns a copy of belief
+    
+    if (desire.length > 0 && !exp.includes(desire[0])) {
+      if (flip(delta)) {
+        exp.push(desire[0]);
+      }
+    }
+    
+    if (desire.length > 1 && !exp.includes(desire[1])) {
+      if (flip(delta)) {
+        exp.push(desire[1]);
+      }
+    }
+    
+    if (desire.length > 2 && !exp.includes(desire[2])) {
+      if (flip(delta)) {
+        exp.push(desire[2]);
+      }
+    }
+    
+    return exp; // might change how expectation is determined later
+  }
+  
+  // assume that:
+  // happy emotion depends on desire only
+  // angry emotion depends on expectation (belief + desire)
+  // gamma chance of experiencing an emotion which is incongruent with the outcome
+  var sampleEmo = function(cat, gamma, outcome, exp, des) { // helper function for drawEmo()
+    if (exp.length == 1) {
+      if (outcome.includes(exp[0])) {
+        cat.splice(2, 1); // assume that agent cannot be angry
+      }
+      
+    } else if (exp.length == 2) {
+      if (outcome.includes(exp[0]) && outcome.includes(exp[1])) {
+        cat.splice(2, 1);
+      }
+      
+    } else if (exp.length == 3) {
+      if (outcome.includes(exp[0]) && outcome.includes(exp[1]) && outcome.includes(exp[2])) {
+        cat.splice(2, 1);
+      }
+    }
+    
+    if (des.length == 0) { // only expectation is concerned
+      if ((exp.length == 1 && !outcome.includes(exp[0])) ||
+          (exp.length == 2 && !(outcome.includes(exp[0]) && outcome.includes(exp[1]))) ||
+          (exp.length == 3 && !(outcome.includes(exp[0]) && outcome.includes(exp[1]) && outcome.includes(exp[2])))
+          ){
+        cat.splice(1, 1); // assume that agent cannot be happy - even though he has no desire
+      }
+      
+    } else if (des.length == 1) {
+      if (!outcome.includes(des[0])) {
+        cat.splice(1, 1); // assume that agent cannot be happy
+      }
+      
+    } else if (des.length == 2) {
+      if (!(outcome.includes(des[0]) && outcome.includes(des[1]))) {
+        cat.splice(1, 1);
+      }
+      
+    } else {
+      if (!(outcome.includes(des[0]) && outcome.includes(des[1]) && outcome.includes(des[2]))) {
+        cat.splice(1, 1);
+      }
+    }
+    
+    return cat.length < 3
+      ? uniformDraw(cat)
+      : flip(gamma) ? cat[1] : uniformDraw(cat);
+  }
+  
+  
+  ////////// FUNCTIONS //////////
+  // worldview: what the observer thinks the structure of the agent's world is like
+  var drawWorld = function(cat, tau) {
+    if (flip(tau)) {
+      return [uniformDraw(cat)];
+
+    } else if (flip(tau)) {
+      var newDraw = function(cat, avoid) {
+        var arg2 = uniformDraw(cat);
+        if (arg2 == avoid) {
+          return newDraw(cat, avoid);
+        } else {
+          return arg2;
+        }
+      }
+      
+      var arg1 = uniformDraw(cat);
+      var arg2 = newDraw(cat, arg1);
+      return [arg1, arg2];
+
+    } else if (flip(tau)) {
+      return cat;
+      
+    } else {
+      return []; // assume that it is the least likely to have no structure
+    }
+  }
+  
+  // assume that agent's beliefs may not be fully correct/representative of how the world works
+  var drawBel = function(cat, alpha, world) {
+    var beliefs = []; // belief set has to be a non-null set of beliefs that is possible from the context of the agent
+    
+    if (world.includes(cat[0])) {
+      if (flip(alpha)) {
+        beliefs.push(cat[0]);
+      }
+    } else {
+      if (!flip(alpha)) {
+        beliefs.push(cat[0]);
+      }
+    }
+    
+    if (world.includes(cat[1])) {
+      if (flip(alpha)) {
+        beliefs.push(cat[1]);
+      }
+    } else {
+      if (!flip(alpha)) {
+        beliefs.push(cat[1]);
+      }
+    }
+    
+    if (world.includes(cat[2])) {
+      if (flip(alpha)) {
+        beliefs.push(cat[2]);
+      }
+    } else {
+      if (!flip(alpha)) {
+        beliefs.push(cat[2]);
+      }
+    }
+    
+    return beliefs.length == 0 ? drawBel(cat, alpha, world) : beliefs;
+  }
+  
+  // assume lower likelihood of having a desire to push the button
+  //
+  // cite papers regarding giving higher prior/desire for lightbulb switching on
+  // and lower prior/desire for button switching on
+  // or use data to substantiate
+  var drawDes = function(cat, tau, beta) {
+    if (flip(tau)) {
+      return flip(beta)
+        ? [sample(Categorical({ps: [0, 1, 1], vs: cat}))]
+        : [uniformDraw(cat)];
+
+    } else if (flip(tau)) {
+      var newDraw = function(cat, avoid) {
+        var arg = flip(beta)
+          ? sample(Categorical({ps: [0, 1, 1], vs: cat}))
+          : uniformDraw(cat);
+        if (arg == avoid[0]) {
+          return newDraw(cat, avoid);
+        } else {
+          return arg;
+        }
+      }
+      
+      var args = flip(beta)
+        ? [sample(Categorical({ps: [0, 1, 1], vs: cat}))]
+        : [uniformDraw(cat)];
+      args.push(newDraw(cat, args));
+      return args;
+
+    } else if (flip(tau)) {
+      return cat;
+      
+    } else {
+      return []; // assume that it is the least likely to have no desires
+    }
+  }
+  
+  var drawAct = function(cat, belief, desire) {
+    var pool = ["ButtonOn", "BulbOneOn", "BulbTwoOn"];
+    var actions = [];
+    
+    if (desire.includes(pool[0])) {
+      if (belief.includes(pool[0])) {
+        actions.push(cat[1]);
+      } else {
+        actions.push(sample(Categorical({ps: [1, 0, 0, 0, 1], vs: cat})));
+      }
+    }
+    
+    if (desire.includes(pool[1])) {
+      if (belief.includes(pool[1])) { // desire for B1 on, and believes button->B1
+        actions.push(cat[1]);
+      } else {
+        actions.push(cat[2]);
+      }
+    }
+    
+    if (desire.includes(pool[2])) {
+      if (belief.includes(pool[2])) { // desire for B2 on, and believes button->B2
+        actions.push(cat[1]);
+      } else {
+        actions.push(cat[3]);
+      }
+    }
+    
+    return actions;
+  }
+  
+  // assume outcome is deterministic based on the action and the worldview (CLT)
+  var drawOut = function(cat, world, action) {
+    if (!action.includes("pushButton")) {
+      return [];
+    }
+    
+    var outcomes = ["ButtonOn"]; // button will switch on as long as it is pushed
+    
+    if (world.includes(cat[0])) { // CLT: if bulbOne lights up, button -> bulbOne
+      outcomes.push(cat[0]);
+    } // CLT: else, button !-> bulbOne
+    
+    if (world.includes(cat[1])) { // CLT: if bulbTwo lights up, button -> bulbTwo
+      outcomes.push(cat[1]);
+    }
+    
+    return outcomes;
+  }
+  
+  var drawEmo = function(cat, delta, gamma, outcome, belief, desire) {
+    var exp = drawExpectation(delta, belief, desire);
+    
+    if (exp.length == 0) { // agent has no exp (and thus desires); assume that this would be unlikely to give rise to an emotion
+      return cat[0]; // flip(gamma) ? cat[0] : uniformDraw(cat);
+      
+    } else {
+      return sampleEmo(cat, gamma, outcome, exp, desire);
+    }
+  }
+  
+  // consider what happens if "others" is drawn
+  var drawExp = function(cat, gamma, emotion) {
+    if (flip(gamma)) {
+      return emotion;
+    } else {
+      var index = cat.indexOf(emotion);
+      if (index !== -1) {
+        cat.splice(index, 1);
+      }
+      return uniformDraw(cat);
+    }
+  }
+  
+  
+  ////////// VARIABLES //////////
+  var tau = 0.6;   // higher tau   -> simpler worldview and desires
+  var alpha = 0.6; // higher alpha -> agent is more knowledgable about the structure of his world
+  var beta = 0.8;  // higher beta  -> higher desire for bulb to be switched on over button to be switched on
+  var delta = 0.2; // higher delta -> agent's expectation is more dependent on the agent's desires
+  var gamma = 0.9; // higher gamma -> greater congruency between emotion and expression
+
+  var belCat = ["ButtonOn", "BulbOneOn", "BulbTwoOn"];
+  var desCat = ["ButtonOn", "BulbOneOn", "BulbTwoOn"];
+  var actCat = ["none", "pushButton", "pushBulbOne", "pushBulbTwo", "moveRandomly"];
+  var outCat = ["BulbOneOn", "BulbTwoOn"];
+  var emoCat = ["none", "happy", "angry", "others"]; // based on Eckman's 6 basic emotions
+  var expCat = ["none", "happy", "angry", "others"];
+
+  var worldview = cleanArr(belCat, drawWorld(belCat, tau));             // categorical and have a uniform prior
+  var belief = drawBel(belCat, alpha, worldview);                       // categorical; currently, assume that belief == worldview
+  var desire = cleanArr(desCat, drawDes(desCat, tau, beta));            // categorical
+  var action = drawAct(actCat, belief, desire);                         // categorical
+  var outcome = drawOut(outCat, worldview, action);                     // categorical, depends on action (should not depend on participants' world view?)
+  var emotion = drawEmo(emoCat, delta, gamma, outcome, belief, desire); // categorical, depends on outcome, agent's beliefs, and desires
+  var expression = drawExp(expCat, gamma, emotion);                     // categorical, depends only on emotion
+
+
+  ////////// CONDITIONS //////////
+  condition(matchArray(outcome, ["ButtonOn", "BulbOneOn"])); // condition on outcome
+  condition(expression == "happy"); // condition on expression
+  
+  return { "belief" : belief };
+}
+
+var dist = Infer({method: 'rejection', samples: 1000}, model);
+// var dist = Infer({method: 'enumerate'}, model);
+viz(dist);
+
+// consider about "others" in emotion space - what is the implication if "others" was drawn from the emotion category?
+
+// Q: why does emotion not affect observers' inference of the structure of the world?
+// A: based on the current model, the outcome is deterministic and entirely based on the structure of the world (and the actions of the agent).
+//    it is independent of the agent's emotions.
+
+// Q: why does the model attribute greater likelihood to the conjunction of events rather than just "BulbTwoOn"?
+// A: because the current model assumes that the agent is alpha = 60% knowledgable about the structure of the world.
+//    the smaller the value of alpha, the less knowledgable the agent, and thus the lower the likelihood of beliefs consisting of BulbOneOn and ButtonOn.
