@@ -206,7 +206,7 @@ function make_slides(f) {
 
   slides.matrixTwo = slide({
     name : "matrixTwo",
-    start: function() {
+    start : function() {
       $(".err").hide();
       this.startTime = Date.now();
   
@@ -249,7 +249,7 @@ function make_slides(f) {
     } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
       return "intention4"
     } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
-      return "knowledge"
+      return "knowledge1"
     } else if (sentence == 'How likely is it that Brock has knowledge of how to switch on his desired lightbulb?') {
       return "knowledge2"
     } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
@@ -330,7 +330,7 @@ function make_slides(f) {
     name : "attention1",
 
     //this gets run only at the beginning of the block
-    start: function() {
+    start : function() {
       $(".err").hide();
       this.startTime = Date.now();
     },
@@ -359,13 +359,13 @@ function make_slides(f) {
     name : "attention2",
 
     //this gets run only at the beginning of the block
-    start: function() {
+    start : function() {
       $(".err").hide();
       this.startTime = Date.now();
     },
 
-    button : function(){
-      if($('input[name=att-button]:checked').length == 0|$('input[name=att-bulb1]:checked').length == 0|$('input[name=att-bulb2]:checked').length == 0) {
+    button : function() {
+      if($("#attention2a").val() == "" || $("#attention2b").val() == "") {
         $(".err").show();
 
       } else {
@@ -379,15 +379,14 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention2RT": this.RT,
-          "attentionButton": $('input[name="att-button"]:checked').val(),
-          "attentionBulb1": $('input[name="att-bulb1"]:checked').val(),
-          "attentionBulb2": $('input[name="att-bulb2"]:checked').val()
+          "attentionBulb1": $('#attention2a').val(),
+          "attentionBulb2": $('#attention2b').val()
         })
     }
   });
 
   ////////// EMOJI MEANING - FOR PILOT //////////
-
+  /*
   slides.emoji = slide({
     name : "emoji",
 
@@ -397,7 +396,7 @@ function make_slides(f) {
       this.startTime = Date.now();
     },
 
-    button : function(){
+    button : function() {
       if ($("#emoji1").val() == "") {
         $(".err").show();
 
@@ -416,7 +415,7 @@ function make_slides(f) {
         })
     }
   });
-
+  */
   ////////// SUBJECT INFORMATION //////////
 
   slides.subj_info =  slide({
@@ -575,14 +574,14 @@ function init() {
     exp.structure=[
       "i0", "botcaptcha", "instructions1", "prior0",
       "prior1a", "prior2a", "prior3a", "prior4a", // different across conditions
-      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
       "i0", "botcaptcha", "instructions1", "prior0",
       "prior1b", "prior2b", "prior3b", "prior4b", // different across conditions
-      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } 

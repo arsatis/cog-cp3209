@@ -608,35 +608,20 @@
       <img src="media/human-pic.png"></img>
     </div>
     <p>Based on the animation you saw, answer the following question.</p>
-    <p><b>Which of the following items "lit" up in the animation?</b></p>
+    <p><b>How many times did the following items "lit" up in the animation?</b></p>
     <p style="font-size: 14px;">(One frame of the animation is provided above for reference)</p>
     <table>   
       <tr>
         <th></th>
-        <th>No</th>
-        <th>Yes</th>
+        <th></th>
       </tr>
-      <tr> 
-        <th><div class="checkboxtable">
-          <p><img src="media/blue.png" width=50px height=50px class="blue"></p>
-        </div></th> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="att-button" value="0">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="att-button" value="1">
-        </div></td> 
-      </tr>
-  
+
       <tr> 
         <th><div class="checkboxtable">
           <p><img src="media/bulb-off-1.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="att-bulb1" value="0">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="att-bulb1" value="1">
+          <input type="text" id="attention2a"/>
         </div></td> 
       </tr>
   
@@ -645,27 +630,12 @@
           <p><img src="media/bulb-off-2.png" width=50px height=50px class="blue"></p>
         </div></th> 
         <td><div class="checkboxtable">
-          <input type="radio" name="att-bulb2" value="0">
-        </div></td> 
-        <td><div class="checkboxtable">
-          <input type="radio" name="att-bulb2" value="1">
-        </div></td> 
+          <input type="text" id="attention2b"/>
+        </div></td>
       </tr>
     </table>
     <button onclick="_s.button()">Continue</button><br><br>
     <div class="err">Please provide a response to all items before continuing.</div>
-  </div>
-
-
-  <!-- Emoji -->
-  <div class="slide" id="emoji">
-    <p class="info">Based on the animation you saw, answer the following questions.</p>
-
-    <b><p>What does the emoji shown in the video mean? <input type="text" id="emoji1"/></p></b><br>
-
-    <button onclick="_s.button()">Continue</button>
-    <div class="err">Please answer the question before continuing.</div>
-    <!-- div class="err2">Please input a number for the estimated delay.</div -->
   </div>
 </div>
 
