@@ -104,8 +104,8 @@
   <!-- Instructions -->
   <div class="slide" id="instructions1">
     <h3>Instructions</h3>
-    <p>In this first part, you will be presented with a brief background about a character, Brock, followed by some short videos of him.<br></p>
-    <p><b>Ensure that your device volume is ON before starting the video.</b><br></p> 
+    <p>In this first part, you will be presented with 4 short videos, followed by another short video taking place in the same room.<br></p>
+    <p><b> Ensure that your device volume is ON before starting the video.</b><br></p> 
     <p><b>Please play the audio below and check that you can comfortably hear the clicking sound.</b><br></p>
         <audio controls>
           <source src="media/button-sound.mp3" type="audio/mpeg">
@@ -119,33 +119,24 @@
 
 
   <!-- Priors -->
-  <div class="slide" id="prior0">
-    <h3>Background</h3>
-    <p>Brock is interested to switch on the lights in his room.<br></p>
-    <p>Click on the button below to observe Brock as he navigates his room.<br></p>
-    <button onclick="_s.button()">Continue</button>
-  </div>
-
-
-  <!-- Condition 1 -->
-  <div class="slide" id="prior1a">
+  <div class="slide" id="prior1">
     <h3>Background</h3>
     <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo1a" width="600" height="600">
+    <video id="myVideo" width="600" height="600">
       <source src="media/four-single.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <audio id="start-video" preload="none">
       <source src="media/start-vid.mp3" type="audio/mpeg">
     </audio><br><br>
-    <button id="buttonprior1a" onclick="_s.button()">Play Video</button>
+    <button id="buttonprior" onclick="_s.button()">Play Video</button>
   </div>
 
 
-  <div class="slide" id="prior2a">
+  <div class="slide" id="prior2">
     <h3>Background</h3>
     <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo2a" width="600" height="600">
+    <video id="myVideo2" width="600" height="600">
       <source src="media/four-single-pink.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -155,10 +146,10 @@
   </div>
 
 
-  <div class="slide" id="prior3a">
+  <div class="slide" id="prior3">
     <h3>Background</h3>
     <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo3a" width="600" height="600">
+    <video id="myVideo3" width="600" height="600">
       <source src="media/four-single.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -168,10 +159,10 @@
   </div>
 
 
-  <div class="slide" id="prior4a">
+  <div class="slide" id="prior4">
     <h3>Background</h3>
     <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo4a" width="600" height="600">
+    <video id="myVideo4" width="600" height="600">
       <source src="media/four-both.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -182,57 +173,34 @@
 
 
 
+  <!-- Condition 1 -->
+  <div class="slide" id="conditionA">
+    <h3>Background</h3>
+    <p>Today, Brock went into his living room again.</p>
+    <video id="myVideo5" width="600" height="600">
+      <source src="media/four-angry.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <audio id="start-video" preload="none">
+      <source src="media/start-vid.mp3" type="audio/mpeg">
+    </audio><br><br>
+    <button id="buttoncond" onclick="_s.button()">Play Video</button> 
+  </div>
+
+
+
   <!-- Condition 2 -->
-  <div class="slide" id="prior1b">
+  <div class="slide" id="conditionB">
     <h3>Background</h3>
-    <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo1b" width="600" height="600">
-      <source src="media/four-single-emo.mp4" type="video/mp4">
+    <p>Today, Brock went into his living room again.</p>
+    <video id="myVideo6" width="600" height="600">
+      <source src="media/four-happy.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <audio id="start-video" preload="none">
       <source src="media/start-vid.mp3" type="audio/mpeg">
     </audio><br><br>
-    <button id="buttonprior1b" onclick="_s.button()">Play Video</button>
-  </div>
-
-
-  <div class="slide" id="prior2b">
-    <h3>Background</h3>
-    <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo2b" width="600" height="600">
-      <source src="media/four-single-pink-emo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <audio id="start-video" preload="none">
-      <source src="media/start-vid.mp3" type="audio/mpeg">
-    </audio><br><br>
-  </div>
-
-
-  <div class="slide" id="prior3b">
-    <h3>Background</h3>
-    <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo3b" width="600" height="600">
-      <source src="media/four-single-emo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <audio id="start-video" preload="none">
-      <source src="media/start-vid.mp3" type="audio/mpeg">
-    </audio><br><br>
-  </div>
-
-
-  <div class="slide" id="prior4b">
-    <h3>Background</h3>
-    <p>Here are some videos of Brock when he visited his living room a couple of times in the past.</p>
-    <video id="myVideo4b" width="600" height="600">
-      <source src="media/four-both-emo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <audio id="start-video" preload="none">
-      <source src="media/start-vid.mp3" type="audio/mpeg">
-    </audio><br><br>
+    <button id="buttoncond" onclick="_s.button()">Play Video</button>
   </div>
 
 
@@ -254,8 +222,9 @@
   <!-- Post-condition instructions -->
   <div class="slide" id="instructionsH">
     <h3>Instructions</h3>
-    <p>In the video, you saw a character, Brock, moving around the room before exiting.</p>
-    <p>Please read the next few statements and rate how likely you think each statement is true based on what you have seen in the video.</p>
+    <p>In the video, you saw a character, Brock, moving around the room before exiting. 
+      Please read the next few statements and rate how likely you think each statement is 
+      true based on what you have seen in the video.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
 

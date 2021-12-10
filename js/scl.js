@@ -41,33 +41,107 @@ function make_slides(f) {
   });
 
   ////////// CONDITIONS //////////
-
-  slides.conditionA = slide({
-    name : "conditionA",
-
-    start: function() {
-      document.getElementById('myVideo').addEventListener('ended',myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-
+  slides.prior0 = slide({
+    name : "prior0",
     button : function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo').play(); //use exp.go() if and only if there is no "present" data.
+      exp.go(); //use exp.go() if and only if there is no "present" data.
     }
   });
 
-  slides.conditionB = slide({
-    name : "conditionB",
+  slides.prior1a = slide({
+    name : "prior1a",
 
     start: function() {
-      document.getElementById('myVideo2').addEventListener('ended',myHandler,false);
+      document.getElementById('myVideo1a').addEventListener('ended', myHandler,false);
       function myHandler(e) { exp.go(); }
     },
 
     button : function() {
       document.getElementById('start-video').play();
-      document.getElementById('myVideo2').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('myVideo1a').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('buttonprior1a').style.display = 'none';
     }
+  });
+
+  slides.prior2a = slide({
+    name : "prior2a",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo2a').play();
+      document.getElementById('myVideo2a').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior3a = slide({
+    name : "prior3a",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo3a').play();
+      document.getElementById('myVideo3a').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior4a = slide({
+    name : "prior4a",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo4a').play();
+      document.getElementById('myVideo4a').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior1b = slide({
+    name : "prior1b",
+
+    start: function() {
+      document.getElementById('myVideo1b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+
+    button : function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo1b').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('buttonprior1b').style.display = 'none';
+    }
+  });
+
+  slides.prior2b = slide({
+    name : "prior2b",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo2b').play();
+      document.getElementById('myVideo2b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior3b = slide({
+    name : "prior3b",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo3b').play();
+      document.getElementById('myVideo3b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior4b = slide({
+    name : "prior4b",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo4b').play();
+      document.getElementById('myVideo4b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
   });
 
   /*
@@ -176,6 +250,8 @@ function make_slides(f) {
       return "intention4"
     } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
       return "knowledge"
+    } else if (sentence == 'How likely is it that Brock has knowledge of how to switch on his desired lightbulb?') {
+      return "knowledge2"
     } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
     } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
@@ -196,8 +272,9 @@ function make_slides(f) {
       {sentence: "How likely is it that Brock wanted to achieve something?"},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'}
+      {sentence: 'How likely is it that Brock has knowledge of how to switch on his desired lightbulb?'},
+      {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'}
     ],
 
     //this gets run only at the beginning of the block
@@ -485,8 +562,8 @@ function init() {
   exp.data = {};
   exp.condition = _.sample(["condition 1", "condition 2"]); // can randomize between subject conditions here
   exp.system = {
-      Browser : BrowserDetect.browser,
-      OS : BrowserDetect.OS,
+      Browser: BrowserDetect.browser,
+      OS: BrowserDetect.OS,
       screenH: screen.height,
       screenUH: exp.height,
       screenW: screen.width,
@@ -496,15 +573,15 @@ function init() {
   //blocks of the experiment:
   if (exp.condition == "condition 1") {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1",
-      "conditionA", // different across conditions
+      "i0", "botcaptcha", "instructions1", "prior0",
+      "prior1a", "prior2a", "prior3a", "prior4a", // different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1",
-      "conditionB", // different across conditions
+      "i0", "botcaptcha", "instructions1", "prior0",
+      "prior1b", "prior2b", "prior3b", "prior4b", // different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "emoji", "subj_info", "thanks"
     ];
 
