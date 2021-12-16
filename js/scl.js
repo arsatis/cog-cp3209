@@ -288,15 +288,15 @@ function make_slides(f) {
       return "intention1"
     } else if (sentence == "How likely is it that Brock wanted to achieve something?") {
       return "intention2"
-    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?') {
+    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?') {
       return "intention3"
-    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
+    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up??') {
       return "intention4"
     } else if (sentence == 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?') {
       return "knowledge1"
     } else if (sentence == 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?') {
       return "knowledge2"
-    } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
+    } else if (sentence == 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> or <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
     } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
       return "attentionCheck"
@@ -314,9 +314,9 @@ function make_slides(f) {
       {sentence: "Are Brock's actions likely to be intentional?"},
       {sentence: "How likely is it that Brock wanted to break a lightbulb?"},
       {sentence: "How likely is it that Brock wanted to achieve something?"},
-      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?'},
+      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up?'},
+      {sentence: 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> or <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?'},
       {sentence: 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?'},
       {sentence: 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?'}
     ],
