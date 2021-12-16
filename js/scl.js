@@ -96,6 +96,28 @@ function make_slides(f) {
     },
   });
 
+  slides.prior5a = slide({
+    name : "prior5a",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo5a').play();
+      document.getElementById('myVideo5a').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior6a = slide({
+    name : "prior6a",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo6a').play();
+      document.getElementById('myVideo6a').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
   slides.prior1b = slide({
     name : "prior1b",
 
@@ -140,6 +162,28 @@ function make_slides(f) {
       document.getElementById('start-video').play();
       document.getElementById('myVideo4b').play();
       document.getElementById('myVideo4b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior5b = slide({
+    name : "prior5b",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo5b').play();
+      document.getElementById('myVideo5b').addEventListener('ended', myHandler,false);
+      function myHandler(e) { exp.go(); }
+    },
+  });
+
+  slides.prior6b = slide({
+    name : "prior6b",
+
+    start: function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo6b').play();
+      document.getElementById('myVideo6b').addEventListener('ended', myHandler,false);
       function myHandler(e) { exp.go(); }
     },
   });
@@ -248,9 +292,9 @@ function make_slides(f) {
       return "intention3"
     } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
       return "intention4"
-    } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
+    } else if (sentence == 'How likely is it that Brock has knowledge of what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?') {
       return "knowledge1"
-    } else if (sentence == 'How likely is it that Brock has knowledge of how to switch on his desired lightbulb?') {
+    } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
       return "knowledge2"
     } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
@@ -272,8 +316,8 @@ function make_slides(f) {
       {sentence: "How likely is it that Brock wanted to achieve something?"},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that Brock has knowledge of how to switch on his desired lightbulb?'},
       {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that Brock has knowledge of what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?'},
       {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'}
     ],
 
@@ -572,15 +616,15 @@ function init() {
   //blocks of the experiment:
   if (exp.condition == "condition 1") {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1", "prior0",
-      "prior1a", "prior2a", "prior3a", "prior4a", // different across conditions
+      "i0", "botcaptcha", "instructions1",// "prior0",
+      "prior1a", "prior2a", "prior3a", "prior4a", "prior5a", "prior6a",// different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1", "prior0",
-      "prior1b", "prior2b", "prior3b", "prior4b", // different across conditions
+      "i0", "botcaptcha", "instructions1",// "prior0",
+      "prior1b", "prior2b", "prior3b", "prior4b",  "prior5b", "prior6b",// different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
