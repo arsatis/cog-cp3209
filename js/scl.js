@@ -292,9 +292,9 @@ function make_slides(f) {
       return "intention3"
     } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
       return "intention4"
-    } else if (sentence == 'How likely is it that Brock has knowledge of what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?') {
+    } else if (sentence == 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?') {
       return "knowledge1"
-    } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
+    } else if (sentence == 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?') {
       return "knowledge2"
     } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
@@ -317,8 +317,8 @@ function make_slides(f) {
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
       {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'},
-      {sentence: 'How likely is it that Brock has knowledge of what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?'},
-      {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'}
+      {sentence: 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?'},
+      {sentence: 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?'}
     ],
 
     //this gets run only at the beginning of the block
