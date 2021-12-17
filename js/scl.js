@@ -290,14 +290,16 @@ function make_slides(f) {
       return "intention2"
     } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?') {
       return "intention3"
-    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up??') {
+    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up?') {
       return "intention4"
+    } else if (sentence == 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> is broken?') {
+      return "intention5"
+    } else if (sentence == 'How likely is it that <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?') {
+      return "intention6"
     } else if (sentence == 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?') {
       return "knowledge1"
     } else if (sentence == 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?') {
       return "knowledge2"
-    } else if (sentence == 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> or <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?') {
-      return "intention5"
     } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
       return "attentionCheck"
     }
@@ -316,7 +318,8 @@ function make_slides(f) {
       {sentence: "How likely is it that Brock wanted to achieve something?"},
       {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?'},
       {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up?'},
-      {sentence: 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> or <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?'},
       {sentence: 'How likely is it that Brock knows what <img src="media/blue.png" width=50px height=50px class="blue" /> causes?'},
       {sentence: 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?'}
     ],
@@ -402,14 +405,14 @@ function make_slides(f) {
   slides.attention2 = slide({ //check this!!!
     name : "attention2",
 
-    //this gets run only at the beginning of the block
-    start : function() {
+    start: function() {
       $(".err").hide();
       this.startTime = Date.now();
     },
 
-    button : function() {
-      if($("#attention2a").val() == "" || $("#attention2b").val() == "") {
+    button : function(){
+      if ($('input[name=att-button]:checked').length == 0 | $('input[name=att-bulb1]:checked').length == 0 | $('input[name=att-bulb2]:checked').length == 0
+        | $('input[name=att-none]:checked').length == 0 | $('input[name=att-both]:checked').length == 0) {
         $(".err").show();
 
       } else {
@@ -423,8 +426,11 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention2RT": this.RT,
-          "attentionBulb1": $('#attention2a').val(),
-          "attentionBulb2": $('#attention2b').val()
+          "attentionButton": $('input[name="att-button"]:checked').val(),
+          "attentionBulb1": $('input[name="att-bulb1"]:checked').val(),
+          "attentionBulb2": $('input[name="att-bulb2"]:checked').val(),
+          "attentionNone": $('input[name="att-none"]:checked').val(),
+          "attentionBoth": $('input[name="att-both"]:checked').val()
         })
     }
   });
