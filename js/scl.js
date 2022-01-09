@@ -221,7 +221,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=orange-blue]:checked').length == 0 | $('input[name=orange-bulb]:checked').length == 0 | $('input[name=blue-bulb]:checked').length == 0) {
+      if($('input[name=r-orange]:checked').length == 0 | $('input[name=r-blue]:checked').length == 0 | $('input[name=orange-blue]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -239,9 +239,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "relationRT": this.RT,
-          "relationOrangeBlue": $('input[name="orange-blue"]:checked').val(),
-          "relationOrangeBulb": $('input[name="orange-bulb"]:checked').val(),
-          "relationBlueBulb": $('input[name="blue-bulb"]:checked').val()
+          "relationOrange": $('input[name="r-orange"]:checked').val(),
+          "relationBlue": $('input[name="r-blue"]:checked').val(),
+          "relationOrangeBlue": $('input[name="orange-blue"]:checked').val()
         })
     }
   });
@@ -257,7 +257,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=exp-orange]:checked').length == 0 | $('input[name=exp-blue]:checked').length == 0 | $('input[name=exp-bulb]:checked').length == 0) {
+      if($('input[name=exp-orange]:checked').length == 0 | $('input[name=exp-blue]:checked').length == 0 | $('input[name=exp-orange-blue]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -276,7 +276,7 @@ function make_slides(f) {
           "expRT": this.RT,
           "expOrange": $('input[name="exp-orange"]:checked').val(),
           "expBlue": $('input[name="exp-blue"]:checked').val(),
-          "expBulb": $('input[name="exp-bulb"]:checked').val()
+          "expBoth": $('input[name="exp-orange-blue"]:checked').val()
         })
     }
   });
@@ -292,10 +292,8 @@ function make_slides(f) {
       return "intention3"
     } else if (sentence == 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
-    } else if (sentence == 'How likely is it that Brock knows what would be caused by pushing the box?') {
+    } else if (sentence == 'How likely is it that Brock knows what causes the bulb to light up?') {
       return "knowledge1"
-    } else if (sentence == 'How likely is it that Brock knows what the function of the box is?') {
-      return "knowledge2"
     } else if (sentence == "How likely is it that Brock wanted to break the lightbulb?") {
       return "attentionCheck"
     }
@@ -314,8 +312,7 @@ function make_slides(f) {
       {sentence: "How likely is it that Brock wanted to achieve something?"},
       {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off.png" width=50px height=50px class="blue" /> to light up?'},
       {sentence: 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?'},
-      {sentence: 'How likely is it that Brock knows what would be caused by pushing the box?'},
-      {sentence: 'How likely is it that Brock knows what the function of the box is?'}
+      {sentence: 'How likely is it that Brock knows what causes the bulb to light up?'}
     ],
 
     //this gets run only at the beginning of the block
@@ -678,7 +675,7 @@ function sendDataToServer(exp_data) {
 		type: 'POST',
     data: exp_data,
     complete: function() {
-      window.location.replace("https://app.prolific.co/submissions/complete?cc=4369BA09") // redirect to prolific
+      window.location.replace("https://app.prolific.co/submissions/complete?cc=8B87D805") // redirect to prolific
     } 
 	});
 }
