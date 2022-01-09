@@ -63,7 +63,7 @@ function make_slides(f) {
     }
   });
 
-  slides.prior2a = slide({
+  /*slides.prior2a = slide({
     name : "prior2a",
 
     start: function() {
@@ -116,7 +116,7 @@ function make_slides(f) {
       document.getElementById('myVideo6a').addEventListener('ended', myHandler,false);
       function myHandler(e) { exp.go(); }
     },
-  });
+  });*/
 
   slides.prior1b = slide({
     name : "prior1b",
@@ -133,7 +133,7 @@ function make_slides(f) {
     }
   });
 
-  slides.prior2b = slide({
+  /*slides.prior2b = slide({
     name : "prior2b",
 
     start: function() {
@@ -186,7 +186,7 @@ function make_slides(f) {
       document.getElementById('myVideo6b').addEventListener('ended', myHandler,false);
       function myHandler(e) { exp.go(); }
     },
-  });
+  });*/
 
   /*
   var randomSort = function(arr){ 
@@ -221,7 +221,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=bulb1-bulb2]:checked').length == 0 | $('input[name=blue-bulb1]:checked').length == 0 | $('input[name=blue-bulb2]:checked').length == 0) {
+      if($('input[name=orange-blue]:checked').length == 0 | $('input[name=orange-bulb]:checked').length == 0 | $('input[name=blue-bulb]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -239,9 +239,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "relationRT": this.RT,
-          "relationOneTwo": $('input[name="bulb1-bulb2"]:checked').val(),
-          "relationBlueOne": $('input[name="blue-bulb1"]:checked').val(),
-          "relationBlueTwo": $('input[name="blue-bulb2"]:checked').val()
+          "relationOrangeBlue": $('input[name="orange-blue"]:checked').val(),
+          "relationOrangeBulb": $('input[name="orange-bulb"]:checked').val(),
+          "relationBlueBulb": $('input[name="blue-bulb"]:checked').val()
         })
     }
   });
@@ -257,7 +257,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=exp-button]:checked').length == 0 | $('input[name=exp-bulb1]:checked').length == 0 | $('input[name=exp-bulb2]:checked').length == 0) {
+      if($('input[name=exp-orange]:checked').length == 0 | $('input[name=exp-blue]:checked').length == 0 | $('input[name=exp-bulb]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -274,9 +274,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "expRT": this.RT,
-          "expButton": $('input[name="exp-button"]:checked').val(),
-          "expOne": $('input[name="exp-bulb1"]:checked').val(),
-          "expTwo": $('input[name="exp-bulb2"]:checked').val()
+          "expOrange": $('input[name="exp-orange"]:checked').val(),
+          "expBlue": $('input[name="exp-blue"]:checked').val(),
+          "expBulb": $('input[name="exp-bulb"]:checked').val()
         })
     }
   });
@@ -288,19 +288,15 @@ function make_slides(f) {
       return "intention1"
     } else if (sentence == "How likely is it that Brock wanted to achieve something?") {
       return "intention2"
-    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?') {
+    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off.png" width=50px height=50px class="blue" /> to light up?') {
       return "intention3"
-    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up?') {
-      return "intention4"
-    } else if (sentence == 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> is broken?') {
+    } else if (sentence == 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
-    } else if (sentence == 'How likely is it that <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?') {
-      return "intention6"
-    } else if (sentence == 'How likely is it that Brock knows what would be caused by pushing <img src="media/blue.png" width=50px height=50px class="blue" />?') {
+    } else if (sentence == 'How likely is it that Brock knows what would be caused by pushing the box?') {
       return "knowledge1"
-    } else if (sentence == 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?') {
+    } else if (sentence == 'How likely is it that Brock knows what the function of the box is?') {
       return "knowledge2"
-    } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
+    } else if (sentence == "How likely is it that Brock wanted to break the lightbulb?") {
       return "attentionCheck"
     }
   }
@@ -314,14 +310,12 @@ function make_slides(f) {
       and for each of these, present_handle will be run.) */
     present: [
       {sentence: "Are Brock's actions likely to be intentional?"},
-      {sentence: "How likely is it that Brock wanted to break a lightbulb?"},
+      {sentence: "How likely is it that Brock wanted to break the lightbulb?"},
       {sentence: "How likely is it that Brock wanted to achieve something?"},
-      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> to light up?'},
-      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> to light up?'},
-      {sentence: 'How likely is it that <img src="media/bulb-off-1.png" width=50px height=50px class="blue" /> is broken?'},
-      {sentence: 'How likely is it that <img src="media/bulb-off-2.png" width=50px height=50px class="blue" /> is broken?'},
-      {sentence: 'How likely is it that Brock knows what would be caused by pushing <img src="media/blue.png" width=50px height=50px class="blue" />?'},
-      {sentence: 'How likely is it that Brock knows what the function of <img src="media/blue.png" width=50px height=50px class="blue" /> is?'}
+      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off.png" width=50px height=50px class="blue" /> to light up?'},
+      {sentence: 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?'},
+      {sentence: 'How likely is it that Brock knows what would be caused by pushing the box?'},
+      {sentence: 'How likely is it that Brock knows what the function of the box is?'}
     ],
 
     //this gets run only at the beginning of the block
@@ -411,8 +405,7 @@ function make_slides(f) {
     },
 
     button : function(){
-      if ($('input[name=att-button]:checked').length == 0 | $('input[name=att-bulb1]:checked').length == 0 | $('input[name=att-bulb2]:checked').length == 0
-        | $('input[name=att-none]:checked').length == 0 | $('input[name=att-both]:checked').length == 0) {
+      if ($('input[name=att-orange]:checked').length == 0 | $('input[name=att-blue]:checked').length == 0 | $('input[name=att-bulb]:checked').length == 0) {
         $(".err").show();
 
       } else {
@@ -426,11 +419,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention2RT": this.RT,
-          "attentionButton": $('input[name="att-button"]:checked').val(),
-          "attentionBulb1": $('input[name="att-bulb1"]:checked').val(),
-          "attentionBulb2": $('input[name="att-bulb2"]:checked').val(),
-          "attentionNone": $('input[name="att-none"]:checked').val(),
-          "attentionBoth": $('input[name="att-both"]:checked').val()
+          "attentionOrange": $('input[name="att-orange"]:checked').val(),
+          "attentionBlue": $('input[name="att-blue"]:checked').val(),
+          "attentionBulb": $('input[name="att-bulb"]:checked').val()
         })
     }
   });
@@ -623,14 +614,14 @@ function init() {
   if (exp.condition == "condition 1") {
     exp.structure=[
       "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1a", "prior2a", "prior3a", "prior4a", "prior5a", "prior6a",// different across conditions
+      "prior1a",// different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
       "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1b", "prior2b", "prior3b", "prior4b",  "prior5b", "prior6b",// different across conditions
+      "prior1b",// different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
