@@ -41,152 +41,51 @@ function make_slides(f) {
   });
 
   ////////// CONDITIONS //////////
-  slides.prior0 = slide({
-    name : "prior0",
-    button : function() {
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  });
 
-  slides.prior1a = slide({
-    name : "prior1a",
+  slides.conditionA = slide({
+    name : "conditionA",
 
     start: function() {
-      document.getElementById('myVideo1a').addEventListener('ended', myHandler,false);
+      document.getElementById('myVideo').addEventListener('ended',myHandler,false);
       function myHandler(e) { exp.go(); }
     },
 
     button : function() {
       document.getElementById('start-video').play();
-      document.getElementById('myVideo1a').play(); //use exp.go() if and only if there is no "present" data.
-      document.getElementById('buttonprior1a').style.display = 'none';
+      document.getElementById('myVideo').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('buttonconda').style.display = 'none';
     }
   });
 
-  /*slides.prior2a = slide({
-    name : "prior2a",
+  slides.conditionB = slide({
+    name : "conditionB",
 
     start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo2a').play();
-      document.getElementById('myVideo2a').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior3a = slide({
-    name : "prior3a",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo3a').play();
-      document.getElementById('myVideo3a').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior4a = slide({
-    name : "prior4a",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo4a').play();
-      document.getElementById('myVideo4a').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior5a = slide({
-    name : "prior5a",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo5a').play();
-      document.getElementById('myVideo5a').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior6a = slide({
-    name : "prior6a",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo6a').play();
-      document.getElementById('myVideo6a').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });*/
-
-  slides.prior1b = slide({
-    name : "prior1b",
-
-    start: function() {
-      document.getElementById('myVideo1b').addEventListener('ended', myHandler,false);
+      document.getElementById('myVideo2').addEventListener('ended',myHandler,false);
       function myHandler(e) { exp.go(); }
     },
 
     button : function() {
       document.getElementById('start-video').play();
-      document.getElementById('myVideo1b').play(); //use exp.go() if and only if there is no "present" data.
-      document.getElementById('buttonprior1b').style.display = 'none';
+      document.getElementById('myVideo2').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('buttoncondb').style.display = 'none';
     }
   });
 
-  /*slides.prior2b = slide({
-    name : "prior2b",
+  slides.conditionC = slide({
+    name : "conditionC",
 
     start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo2b').play();
-      document.getElementById('myVideo2b').addEventListener('ended', myHandler,false);
+      document.getElementById('myVideo3').addEventListener('ended',myHandler,false);
       function myHandler(e) { exp.go(); }
     },
+
+    button : function() {
+      document.getElementById('start-video').play();
+      document.getElementById('myVideo3').play(); //use exp.go() if and only if there is no "present" data.
+      document.getElementById('buttoncondc').style.display = 'none';
+    }
   });
-
-  slides.prior3b = slide({
-    name : "prior3b",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo3b').play();
-      document.getElementById('myVideo3b').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior4b = slide({
-    name : "prior4b",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo4b').play();
-      document.getElementById('myVideo4b').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior5b = slide({
-    name : "prior5b",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo5b').play();
-      document.getElementById('myVideo5b').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });
-
-  slides.prior6b = slide({
-    name : "prior6b",
-
-    start: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo6b').play();
-      document.getElementById('myVideo6b').addEventListener('ended', myHandler,false);
-      function myHandler(e) { exp.go(); }
-    },
-  });*/
 
   /*
   var randomSort = function(arr){ 
@@ -221,7 +120,7 @@ function make_slides(f) {
     },
     button : function() {
 
-      if($('input[name=r-orange]:checked').length == 0 | $('input[name=r-blue]:checked').length == 0 | $('input[name=orange-blue]:checked').length == 0) {
+      if($('input[name=bulb1-bulb2]:checked').length == 0 | $('input[name=blue-bulb1]:checked').length == 0 | $('input[name=blue-bulb2]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -239,9 +138,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "relationRT": this.RT,
-          "relationOrange": $('input[name="r-orange"]:checked').val(),
-          "relationBlue": $('input[name="r-blue"]:checked').val(),
-          "relationOrangeBlue": $('input[name="orange-blue"]:checked').val()
+          "relationOneTwo": $('input[name="bulb1-bulb2"]:checked').val(),
+          "relationBlueOne": $('input[name="blue-bulb1"]:checked').val(),
+          "relationBlueTwo": $('input[name="blue-bulb2"]:checked').val()
         })
     }
   });
@@ -250,14 +149,14 @@ function make_slides(f) {
 
   slides.matrixTwo = slide({
     name : "matrixTwo",
-    start : function() {
+    start: function() {
       $(".err").hide();
       this.startTime = Date.now();
   
     },
     button : function() {
 
-      if($('input[name=exp-orange]:checked').length == 0 | $('input[name=exp-blue]:checked').length == 0 | $('input[name=exp-orange-blue]:checked').length == 0) {
+      if($('input[name=exp-button]:checked').length == 0 | $('input[name=exp-bulb1]:checked').length == 0 | $('input[name=exp-bulb2]:checked').length == 0) {
         $(".err").show();
       } else {
   
@@ -274,9 +173,9 @@ function make_slides(f) {
       append(exp.data,
         {
           "expRT": this.RT,
-          "expOrange": $('input[name="exp-orange"]:checked').val(),
-          "expBlue": $('input[name="exp-blue"]:checked').val(),
-          "expBoth": $('input[name="exp-orange-blue"]:checked').val()
+          "expButton": $('input[name="exp-button"]:checked').val(),
+          "expOne": $('input[name="exp-bulb1"]:checked').val(),
+          "expTwo": $('input[name="exp-bulb2"]:checked').val()
         })
     }
   });
@@ -288,13 +187,15 @@ function make_slides(f) {
       return "intention1"
     } else if (sentence == "How likely is it that Brock wanted to achieve something?") {
       return "intention2"
-    } else if (sentence == 'How likely is it that Brock wanted <img src="media/bulb-off.png" width=50px height=50px class="blue" /> to light up?') {
+    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?') {
       return "intention3"
-    } else if (sentence == 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?') {
+    } else if (sentence == 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?') {
+      return "intention4"
+    } else if (sentence == 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?') {
       return "intention5"
-    } else if (sentence == 'How likely is it that Brock knows what causes the bulb to light up?') {
-      return "knowledge1"
-    } else if (sentence == "How likely is it that Brock wanted to break the lightbulb?") {
+    } else if (sentence == 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?') {
+      return "knowledge"
+    } else if (sentence == "How likely is it that Brock wanted to break a lightbulb?") {
       return "attentionCheck"
     }
   }
@@ -308,11 +209,12 @@ function make_slides(f) {
       and for each of these, present_handle will be run.) */
     present: [
       {sentence: "Are Brock's actions likely to be intentional?"},
-      {sentence: "How likely is it that Brock wanted to break the lightbulb?"},
+      {sentence: "How likely is it that Brock wanted to break a lightbulb?"},
       {sentence: "How likely is it that Brock wanted to achieve something?"},
-      {sentence: 'How likely is it that Brock wanted <img src="media/bulb-off.png" width=50px height=50px class="blue" /> to light up?'},
-      {sentence: 'How likely is it that <img src="media/bulb-off.png" width=50px height=50px class="blue" /> is broken?'},
-      {sentence: 'How likely is it that Brock knows what causes the bulb to light up?'}
+      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-1.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that Brock wanted to switch on <img src="media/bulb-off-2.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that Brock has knowledge of the function of <img src="media/blue.png" width=50px height=50px class="blue" />?'},
+      {sentence: 'How likely is it that <img src="media/blue.png" width=50px height=50px class="blue" /> is broken?'}
     ],
 
     //this gets run only at the beginning of the block
@@ -368,7 +270,7 @@ function make_slides(f) {
     name : "attention1",
 
     //this gets run only at the beginning of the block
-    start : function() {
+    start: function() {
       $(".err").hide();
       this.startTime = Date.now();
     },
@@ -396,13 +298,14 @@ function make_slides(f) {
   slides.attention2 = slide({ //check this!!!
     name : "attention2",
 
+    //this gets run only at the beginning of the block
     start: function() {
       $(".err").hide();
       this.startTime = Date.now();
     },
 
     button : function(){
-      if ($('input[name=att-orange]:checked').length == 0 | $('input[name=att-blue]:checked').length == 0 | $('input[name=att-bulb]:checked').length == 0) {
+      if($('input[name=att-button]:checked').length == 0|$('input[name=att-bulb1]:checked').length == 0|$('input[name=att-bulb2]:checked').length == 0) {
         $(".err").show();
 
       } else {
@@ -416,44 +319,13 @@ function make_slides(f) {
       append(exp.data,
         {
           "attention2RT": this.RT,
-          "attentionOrange": $('input[name="att-orange"]:checked').val(),
-          "attentionBlue": $('input[name="att-blue"]:checked').val(),
-          "attentionBulb": $('input[name="att-bulb"]:checked').val()
+          "attentionButton": $('input[name="att-button"]:checked').val(),
+          "attentionBulb1": $('input[name="att-bulb1"]:checked').val(),
+          "attentionBulb2": $('input[name="att-bulb2"]:checked').val()
         })
     }
   });
 
-  ////////// EMOJI MEANING - FOR PILOT //////////
-  /*
-  slides.emoji = slide({
-    name : "emoji",
-
-    start: function() {
-      $(".err").hide();
-      // $(".err2").hide();
-      this.startTime = Date.now();
-    },
-
-    button : function() {
-      if ($("#emoji1").val() == "") {
-        $(".err").show();
-
-      } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-        this.log_responses();
-        exp.go();
-      }
-    },
-
-    log_responses : function() {
-      append(exp.data,
-        {
-          "emojiRT": this.RT,
-          "emojiResp": $("#emoji1").val()
-        })
-    }
-  });
-  */
   ////////// SUBJECT INFORMATION //////////
 
   slides.subj_info =  slide({
@@ -597,10 +469,10 @@ function init() {
   */
 
   exp.data = {};
-  exp.condition = _.sample(["condition 1", "condition 2"]); // can randomize between subject conditions here
+  exp.condition = _.sample(["condition 1", "condition 2", "condition 3"]); // can randomize between subject conditions here
   exp.system = {
-      Browser: BrowserDetect.browser,
-      OS: BrowserDetect.OS,
+      Browser : BrowserDetect.browser,
+      OS : BrowserDetect.OS,
       screenH: screen.height,
       screenUH: exp.height,
       screenW: screen.width,
@@ -610,15 +482,22 @@ function init() {
   //blocks of the experiment:
   if (exp.condition == "condition 1") {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1a",// different across conditions
+      "i0", "botcaptcha", "instructions1",
+      "conditionA", // different across conditions
+      "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
+    ];
+
+  } else if (exp.condition == "condition 2") {
+    exp.structure=[
+      "i0", "botcaptcha", "instructions1",
+      "conditionB", // different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
-      "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1b",// different across conditions
+      "i0", "botcaptcha", "instructions1",
+      "conditionC", // different across conditions
       "instructionsH", "matrixOne", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
@@ -675,7 +554,7 @@ function sendDataToServer(exp_data) {
 		type: 'POST',
     data: exp_data,
     complete: function() {
-      window.location.replace("https://app.prolific.co/submissions/complete?cc=8B87D805") // redirect to prolific
+      window.location.replace("https://app.prolific.co/submissions/complete?cc=5C3823D9") // redirect to prolific
     } 
 	});
 }
