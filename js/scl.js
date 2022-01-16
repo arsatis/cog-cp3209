@@ -560,7 +560,7 @@ function sendDataToServer(exp_data) {
 		type: 'POST',
     data: exp_data,
     complete: function() {
-      window.location.replace("https://app.prolific.co/submissions/complete?cc=5C3823D9") // redirect to prolific
+      window.location.replace("https://app.prolific.co/submissions/complete?cc=48E4F922") // redirect to prolific
     } 
 	});
 }
