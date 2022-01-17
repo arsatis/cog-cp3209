@@ -9,6 +9,7 @@ function initFadeIn() {
 
 function make_slides(f) {
   var slides = {};
+  var startTime;
 
   ////////// INSTRUCTIONS //////////
 
@@ -56,6 +57,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior1a').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -69,7 +71,7 @@ function make_slides(f) {
       if($('input[name=r-orange1]:checked').length == 0 | $('input[name=r-blue1]:checked').length == 0 | $('input[name=orange-blue1]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -105,6 +107,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior2a').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -118,7 +121,7 @@ function make_slides(f) {
       if($('input[name=r-orange2]:checked').length == 0 | $('input[name=r-blue2]:checked').length == 0 | $('input[name=orange-blue2]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -143,6 +146,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior3a').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -156,7 +160,7 @@ function make_slides(f) {
       if($('input[name=r-orange3]:checked').length == 0 | $('input[name=r-blue3]:checked').length == 0 | $('input[name=orange-blue3]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -181,6 +185,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior4a').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -194,7 +199,7 @@ function make_slides(f) {
       if($('input[name=r-orange4]:checked').length == 0 | $('input[name=r-blue4]:checked').length == 0 | $('input[name=orange-blue4]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -219,6 +224,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior5a').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -232,7 +238,7 @@ function make_slides(f) {
       if($('input[name=r-orange5]:checked').length == 0 | $('input[name=r-blue5]:checked').length == 0 | $('input[name=orange-blue5]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -250,13 +256,14 @@ function make_slides(f) {
   });
 
   slides.prior1b = slide({
-    name : "prior1b",
+    name: "prior1b",
 
     start: function() {
       document.getElementById('myVideo1b').addEventListener('ended', myHandler, false);
       function myHandler(e) {
         document.getElementById('qprior1b').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -270,7 +277,7 @@ function make_slides(f) {
       if($('input[name=r-orange1]:checked').length == 0 | $('input[name=r-blue1]:checked').length == 0 | $('input[name=orange-blue1]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -295,6 +302,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior2b').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -308,7 +316,7 @@ function make_slides(f) {
       if($('input[name=r-orange2]:checked').length == 0 | $('input[name=r-blue2]:checked').length == 0 | $('input[name=orange-blue2]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -333,6 +341,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior3b').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -346,7 +355,7 @@ function make_slides(f) {
       if($('input[name=r-orange3]:checked').length == 0 | $('input[name=r-blue3]:checked').length == 0 | $('input[name=orange-blue3]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -371,6 +380,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior4b').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -384,7 +394,7 @@ function make_slides(f) {
       if($('input[name=r-orange4]:checked').length == 0 | $('input[name=r-blue4]:checked').length == 0 | $('input[name=orange-blue4]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
@@ -409,6 +419,7 @@ function make_slides(f) {
       function myHandler(e) {
         document.getElementById('qprior5b').style.visibility = "visible";
         $(".err").hide();
+        startTime = Date.now();
       }
     },
 
@@ -422,7 +433,7 @@ function make_slides(f) {
       if($('input[name=r-orange5]:checked').length == 0 | $('input[name=r-blue5]:checked').length == 0 | $('input[name=orange-blue5]:checked').length == 0) {
         $(".err").show();
       } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
+        this.RT = (Date.now() - startTime) / 1000; // record time spent on trial
         this.log_responses();
         exp.go();
       }
