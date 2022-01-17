@@ -249,44 +249,6 @@ function make_slides(f) {
     }
   });
 
-  slides.prior6a = slide({
-    name: "prior6a",
-
-    start: function() {
-      document.getElementById('myVideo6a').addEventListener('ended', myHandler, false);
-      function myHandler(e) {
-        document.getElementById('qprior6a').style.visibility = "visible";
-        $(".err").hide();
-      }
-    },
-
-    button: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo6a').play();
-      document.getElementById('buttonprior6a').style.display = 'none';
-    },
-
-    button2: function() {
-      if($('input[name=r-orange6]:checked').length == 0 | $('input[name=r-blue6]:checked').length == 0 | $('input[name=orange-blue6]:checked').length == 0) {
-        $(".err").show();
-      } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-        this.log_responses();
-        exp.go();
-      }
-    },
-  
-    log_responses: function() {
-      append(exp.data,
-        {
-          "relation6RT": this.RT,
-          "relation6Orange": $('input[name="r-orange6"]:checked').val(),
-          "relation6Blue": $('input[name="r-blue6"]:checked').val(),
-          "relation6OrangeBlue": $('input[name="orange-blue6"]:checked').val()
-        })
-    }
-  });
-
   slides.prior1b = slide({
     name : "prior1b",
 
@@ -473,44 +435,6 @@ function make_slides(f) {
           "relation5Orange": $('input[name="r-orange5"]:checked').val(),
           "relation5Blue": $('input[name="r-blue5"]:checked').val(),
           "relation5OrangeBlue": $('input[name="orange-blue5"]:checked').val()
-        })
-    }
-  });
-
-  slides.prior6b = slide({
-    name: "prior6b",
-
-    start: function() {
-      document.getElementById('myVideo6b').addEventListener('ended', myHandler, false);
-      function myHandler(e) {
-        document.getElementById('qprior6b').style.visibility = "visible";
-        $(".err").hide();
-      }
-    },
-
-    button: function() {
-      document.getElementById('start-video').play();
-      document.getElementById('myVideo6b').play();
-      document.getElementById('buttonprior6b').style.display = 'none';
-    },
-
-    button2: function() {
-      if($('input[name=r-orange6]:checked').length == 0 | $('input[name=r-blue6]:checked').length == 0 | $('input[name=orange-blue6]:checked').length == 0) {
-        $(".err").show();
-      } else {
-        this.RT = (Date.now() - this.startTime) / 1000; // record time spent on trial
-        this.log_responses();
-        exp.go();
-      }
-    },
-  
-    log_responses: function() {
-      append(exp.data,
-        {
-          "relation6RT": this.RT,
-          "relation6Orange": $('input[name="r-orange6"]:checked').val(),
-          "relation6Blue": $('input[name="r-blue6"]:checked').val(),
-          "relation6OrangeBlue": $('input[name="orange-blue6"]:checked').val()
         })
     }
   });
@@ -916,15 +840,15 @@ function init() {
   if (exp.condition == "condition 1") {
     exp.structure=[
       "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1a", "prior2a", "prior3a", "prior4a", "prior5a", "prior6a",// different across conditions
-      "instructionsH", "matrixTwo", "attention1", "attention2", "subj_info", "thanks"
+      "prior1a", "prior2a", "prior3a", "prior4a", "prior5a",// different across conditions
+      "instructionsH", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } else {
     exp.structure=[
       "i0", "botcaptcha", "instructions1",// "prior0",
-      "prior1b", "prior2b", "prior3b", "prior4b", "prior5b", "prior6b",// different across conditions
-      "instructionsH", "matrixTwo", "attention1", "attention2", "subj_info", "thanks"
+      "prior1b", "prior2b", "prior3b", "prior4b", "prior5b",// different across conditions
+      "instructionsH", "matrixTwo", "intentionH", "attention1", "attention2", "subj_info", "thanks"
     ];
 
   } 
@@ -980,7 +904,7 @@ function sendDataToServer(exp_data) {
 		type: 'POST',
     data: exp_data,
     complete: function() {
-      window.location.replace("https://app.prolific.co/submissions/complete?cc=8B87D805") // redirect to prolific
+      window.location.replace("https://app.prolific.co/submissions/complete?cc=3A7CAAF3") // redirect to prolific
     } 
 	});
 }
